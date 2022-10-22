@@ -1,2 +1,8 @@
 import config
-import sqlite3
+import sqlManager
+import aiogram
+
+
+
+if __name__ == "__main__":
+    con, cur = sqlManager.main()

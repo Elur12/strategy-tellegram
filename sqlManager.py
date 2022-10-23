@@ -10,9 +10,9 @@ def main():
 class users():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
         self.cur.execute("""CREATE TABLE IF NOT EXISTS users(
            id INT PRIMARY KEY,
@@ -22,14 +22,14 @@ class users():
            campChange INT,
            accessLevel INT);
         """)
-        con.commit()
+        self.con.commit()
 
 class campChange():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
         self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
            id INT PRIMARY KEY,
@@ -38,99 +38,102 @@ class campChange():
            name TEXT,
            score INT);
         """)
-        con.commit()
+        self.con.commit()
 
 class timeTable():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS timeTable(
            id INT PRIMARY KEY,
            date TEXT,
            timeTable BLOB,
            campChange INT);
         """)
-        con.commit()
+        self.con.commit()
 
 class personalHistory():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS personalHistory(
            id INT PRIMARY KEY,
-           from INT,
-           to INT,
+           fromWhom INT,
+           toWhom INT,
            amount INT,
            cause INT,
-           comment INT);
+           comment INT,
+           dateTimeAdd TEXT);
         """)
-        con.commit()
+        self.con.commit()
 
 class commandHistory():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS commandHistory(
            id INT PRIMARY KEY,
-           from INT,
-           to INT,
+           fromWhom INT,
+           toWhom INT,
            amount INT,
            cause INT,
-           comment INT);
+           comment INT,
+           dateTimeAdd TEXT);
         """)
-        con.commit()
+        self.con.commit()
 
 class causePersonal():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS causePersonal(
            id INT PRIMARY KEY,
            accessLevel INT,
            title INT,
            maxScore INT);
         """)
-        con.commit()
+        self.con.commit()
 
 class causeCommand():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS causeCommand(
            id INT PRIMARY KEY,
            accessLevel INT,
            title INT,
            maxScore INT);
         """)
-        con.commit()
+        self.con.commit()
 
 class achievements():
     con = None
     cur = None
-    def __init__(self, con, cur) -> None:
-        self.con = con
-        self.cur = cur
+    def __init__(self, conf) -> None:
+        self.con = conf[0]
+        self.cur = conf[1]
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS campChange(
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS achievements(
            id INT PRIMARY KEY,
            title INT,
            description INT,
            mode TEXT,
            maxScore INT);
         """)
-        con.commit()
+        self.con.commit()
+

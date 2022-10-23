@@ -2,3 +2,4 @@ config.py
 main.db
 /__pycache__
 /idea
+/sourceTable
